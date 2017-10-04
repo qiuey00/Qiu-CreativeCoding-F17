@@ -1,6 +1,7 @@
 
 var myMap;
 var mapto;
+var color;
 function setup(){
 	createCanvas(600,600)
 
@@ -36,6 +37,8 @@ function draw(){
 	
 	// 3 squares with for loop
 	// for (var j = 0; j < 3; j++){
+		// color = map(j,0,2,50,250);
+		// fill(color);
 	// 	push()
 	// 	myMap = map(j,0,2,150,450);
 	// 	translate(myMap,300);
@@ -50,6 +53,8 @@ function draw(){
 
 	//controlling the rotation with the mouse
 	for (var j = 0; j < 3; j++){
+		color = map(j,0,2,50,250);
+		fill(color);
 		push()
 		myMap = map(j,0,2,150,450);
 		translate(myMap,300);
