@@ -1,6 +1,7 @@
 var y = 50;
 var z = 1;
 var p = 1;
+var count = 0;
 function setup(){
 	createCanvas(600,600);
 	background(200);
@@ -24,8 +25,8 @@ function draw(){
 
      	push();
      	translate(300,300);
-     	rotate(mappedRot);
      	rotate(2*PI/p*i);
+     	rotate(mappedRot);
      	for(var j = 0; j < z; j++){
      		triangle(40,-40,40,40,y+j*10,0);
      	}
@@ -34,7 +35,17 @@ function draw(){
  }
 
 function changeColor(color){
-	stroke(color,0,0);
+	if (count % 3 == 0){
+		stroke(color,0,0);
+	} else if(count % 3 == 1){
+		stroke(0,color,0);
+	}else{
+		stroke(0,0,color);
+	}
+}
+
+function mouseClicked(){
+	count ++;
 }
 
  function keyPressed(){
