@@ -1,4 +1,4 @@
-var y = 100;
+var y = 50;
 var z = 1;
 var p = 1;
 function setup(){
@@ -19,12 +19,12 @@ function draw(){
 	ellipse(0,0,80,80);
 	pop();
 
+
      for(var i = 0; i < p; i++){
 
      	push();
      	translate(300,300);
      	rotate(mappedRot);
-     	var iw = 2*PI/p;
      	rotate(2*PI/p*i);
      	for(var j = 0; j < z; j++){
      		triangle(40,-40,40,40,y+j*10,0);
