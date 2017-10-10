@@ -1,3 +1,6 @@
+
+//Jeffrey Qiu and Remi Wong
+
 var y = 100;
 var z = 1;
 var p = 1;
