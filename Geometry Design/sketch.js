@@ -1,18 +1,33 @@
-var y = 50;
+var y = 100;
 var z = 1;
 var p = 1;
 var count = 0;
+var textA = 150;
+var textB = 150;
+var textC = 150;
+
 function setup(){
 	createCanvas(600,600);
-	background(200);
-	noFill();
+	background(30);
+    noFill();
+    
 }
 
 function draw(){
 
-	background(200);
-	var colorY = map(mouseY, 0, height, 0,255);
-    changeColor(colorY);
+	background(30);
+    
+    stroke(textA);
+    text("V1",10,590);
+    stroke(textB);
+    text("V2",30,590);
+    stroke(textC);
+    text("V3",50,590);
+    
+	//var colorY = map(mouseY, 0, height, 0,255);
+    var colorY = (millis()/40)  % 220;
+    var colorX = (millis()/30) % 220;
+    changeColor(colorY,colorX);
 
 	var mappedRot = map(mouseX,0,width,0,2*PI);
 	push();
@@ -34,13 +49,27 @@ function draw(){
      }
  }
 
-function changeColor(color){
+function changeColor(color,color2){
+    // Color V1
 	if (count % 3 == 0){
-		stroke(color,0,0);
-	} else if(count % 3 == 1){
-		stroke(0,color,0);
-	}else{
-		stroke(0,0,color);
+		stroke(color,color2,100);
+        textA = 255;
+        textB = 150;
+        textC = 150;
+	} 
+    // Color V2
+    else if(count % 3 == 1){
+		stroke(100,color,color2);
+        textB = 255;
+        textA = 150;
+        textC = 150;
+	}
+    // Color V3
+    else{
+		stroke(color2,100,color);
+        textC = 255;
+        textA = 150;
+        textB = 150;
 	}
 }
 
@@ -48,7 +77,7 @@ function mouseClicked(){
 	count ++;
 }
 
- function keyPressed(){
+function keyPressed(){
 
  	if(keyCode == UP_ARROW){
  		z ++;
