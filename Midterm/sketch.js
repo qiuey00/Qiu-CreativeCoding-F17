@@ -34,13 +34,13 @@ function draw() {
 		prime = false;
 	}
 	
-	background(255,203,148);
+	background(255, 240, 216);
 	// image(myImage,0,0);
 	if (prime == false){
 		push();
 		var backFade= map(rainTime, 0, 120, 100, 0);
 		// print(backFade);
-		background(255,203,148, backFade);
+		background(255, 240, 216, backFade);
 		// background(0,0,0,backFade);
 		pop();
 	}
