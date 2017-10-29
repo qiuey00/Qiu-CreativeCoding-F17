@@ -29,35 +29,33 @@ function draw(){
 	x += xspeed;
 	y += yspeed;
 
-	if (x > width){
+	if (x >= width){
 		mySound.play();
 		xspeed *= -1;
 		r+= random(0,50);
 		r = r%255;
 	}
-	else if (y < 0){
+	else if (y <= 0){
 		mySound.play();
 		yspeed *= -1
 		g+=random(0,50);
 		g = b%255;
 	}
-	else if (x < 0){
+	else if (x <= 0){
 		mySound.play();
 		xspeed *= -1;
 		b += random(0,50);
 		b = b%255;
 	}
-	else if (y > height){
+	else if (y >= height){
 		mySound.play();
-		// xspeed = random(xspeed-.5,xspeed+.5);
-		// yspeed = random(yspeed-.5,yspeed+.5);
-		// if (xspeed < 1 || xspeed>10) {
-		// 	xspeed = random(2,7);
-		// }
-		// else if (yspeed < 1 || xspeed>10) {
-		// 	yspeed = random(2,7);
-		// }
 		yspeed *= -1;
 	}
+}
+
+function mouseClicked(){
+	//change the speed of the ball when it hits the bottom wall
+	xspeed = random(2,7);
+	yspeed = random(2,7);
 }
 
