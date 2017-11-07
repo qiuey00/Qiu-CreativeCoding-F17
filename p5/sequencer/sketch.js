@@ -91,9 +91,10 @@ function keyPressed(){
 function Bar(){
 	this.x = 0;
 	this.speed = 1
+	this.color = "black";
 	this.draw = function(){
 		noStroke();
-		// fill(0);
+		fill(this.color);
 		rect(this.x,0,5,height);
 		this.x += this.speed;
 		if (this.x > width){
@@ -101,7 +102,7 @@ function Bar(){
 		}
 	}
 	this.changeColor = function(aColor){
-		fill(aColor);
+		this.color = aColor;
 	}
 	this.speedUP = function(){
 		this.speed += .3
@@ -129,6 +130,7 @@ function Note(aX,aY,radii, color){
 
 	this.draw = function(){
 		if(this.on){
+			fill(this.color);
 			ellipse(this.x,this.y,this.radi, this.radi);
 		}
 	}
