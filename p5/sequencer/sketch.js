@@ -17,7 +17,7 @@ function draw() {
 	
 	
 	for (var i = 0; i < notes.length; i++){
-		notes[i].isHit(bar.x);
+		notes[i].isHit(bar);
 		notes[i].draw();
 	}
 	bar.draw();
@@ -37,7 +37,7 @@ function draw() {
 	}
 	if (keyIsDown(LEFT_ARROW)){
 		radi-=1;
-		if (radi == 0){
+		if (radi < 0){
 			radi = 0;
 		}
 	}
@@ -100,6 +100,7 @@ function Bar(){
 		if (this.x > width){
 			this.x = 0;
 		}
+		fill("black");
 	}
 	this.changeColor = function(aColor){
 		this.color = aColor;
@@ -116,7 +117,7 @@ function Bar(){
 
 }
 
-function Note(aX,aY,radii, color){
+function Note(aX,aY,radii, aColor){
 	this.x = aX;
 	this.y = aY;
 	this.radi = radii;
@@ -126,7 +127,7 @@ function Note(aX,aY,radii, color){
 	this.sound = new p5.Oscillator(this.soundMap);
 	this.sound.start();
 	this.sound.amp(0);
-	this.color = color;
+	this.color = aColor;
 
 	this.draw = function(){
 		if(this.on){
@@ -141,16 +142,16 @@ function Note(aX,aY,radii, color){
 			}
 		}
 	}
-	this.isHit = function(barX){
-		if(barX+5 > this.x-this.radi/2 && barX < this.x+this.radi/2){
+	this.isHit = function(aBar){
+		if(aBar.x+5 > this.x-this.radi/2 && aBar.x < this.x+this.radi/2){
 			this.sound.amp(0.5,.05);
 			fill(this.color);
-			bar.changeColor(this.color);
+			aBar.changeColor(this.color);
 		}
 		else {
 			this.sound.amp(0,.05);
 			// var a = color(0,0,0)
-			bar.changeColor("black");
+			// aBar.changeColor("black");
 		}
 	}
 }
