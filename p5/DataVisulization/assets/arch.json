@@ -25,6 +25,83 @@
             "qualities": ["obedient"],
             "nature": "neutral"
         },
-        
+        {
+            "name": "caretaker",
+            "synonyms": ["healer","doctor","nurse"],
+            "qualities": ["caring","healing"],
+            "nature": "good"
+        },
+        {
+            "name": "catalyst",
+            "synonyms": ["doer"],
+            "qualities": ["dynamic","changeable","mercurial","unpredictable"],
+            "nature": "neutral"
+        },
+        {
+            "name": "coward",
+            "synonyms": ["wimp"],
+            "qualities": ["weak","craven","fearful"],
+            "nature": "evil"
+        },
+        {
+            "name": "curmudgeon",
+            "synonyms": ["grump"],
+            "qualities": ["opinionated","cranky","resolute"],
+            "nature": "evil"
+        },
+        {
+            "name": "mentor",
+            "synonyms": ["elder","teacher","professor","parent"],
+            "qualities": ["educating","guiding","helpful"],
+            "nature": "neutral"
+        },
+        {
+            "name": "shaman",
+            "synonyms": ["guide","medium","soothsayer"],
+            "qualities": ["mystical","mysterious"],
+            "nature": "neutral"
+        },
+        {
+            "name": "herald",
+            "synonyms": ["hierophant","expositor"],
+            "qualities": ["expositional","revealing"],
+            "nature": "neutral"
+        },
+        {
+            "name": "trickster",
+            "synonyms": ["shapeshifter","magician","devil"],
+            "qualities": ["confusing","egocentric","misleading","clever","manipulative"],
+            "nature": "evil"
+        },
+        {
+            "name": "fool",
+            "synonyms": ["joker","jester","idiot"],
+            "qualities": ["thoughtless","silly","amusing"],
+            "nature": "evil"
+        },
+        {
+            "name": "child",
+            "synonyms": ["innocent","virgin","youth","ingenue"],
+            "qualities": ["innocent","naive","simple","straightforward","credulous","endearing"],
+            "nature": "good"
+        },
+        {
+            "name": "self",
+            "synonyms": ["mirror-image"],
+            "qualities": ["reflecting"],
+            "nature": "good"
+        },
+        {
+            "name": "hermit",
+            "synonyms": ["loner","introvert"],
+            "qualities": ["quiet","secretive"],
+            "nature": "neutral"
+        },
+        {
+            "name": "wanderer",
+            "synonyms": ["traveler","explorer"],
+            "qualities": ["curious"],
+            "nature": "neutral"
+        }
     ]
 }
