@@ -13,29 +13,29 @@ function setup(){
 	var aY = 20;
 
 	var aX1 = 20;
-	var aY1 = 40;
+	var aY1 = 50;
 
 	var aX2 = 20;
-	var aY2 = 60;
+	var aY2 = 80;
 
 	for(var i = 0; i < data.characters.length; i++){
 		if (data.characters[i].nature == "good"){
 			good++;
-			append(Nodes, new Node(aX,aY,10,"green"));
-			aX += 20;
-			aY += 20;
+			append(Nodes, new Node(aX,aY,25,"green"));
+			aX += 30;
+			aY += 30;
 		}
 		else if (data.characters[i].nature == "neutral"){
 			neutral++;
-			append(Nodes, new Node(aX1,aY1,10,"grey"));
-			aX1 += 20;
-			aY1 += 20;
+			append(Nodes, new Node(aX1,aY1,25,"grey"));
+			aX1 += 30;
+			aY1 += 30;
 		}
 		else if (data.characters[i].nature == "evil"){
 			evil++;
-			append(Nodes, new Node(aX2,aY2,10,"red"));
-			aX2 += 20;
-			aY2 += 20;
+			append(Nodes, new Node(aX2,aY2,25,"red"));
+			aX2 += 30;
+			aY2 += 30;
 		}
 		
 	}

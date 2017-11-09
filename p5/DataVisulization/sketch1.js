@@ -15,46 +15,47 @@ function setup(){
 			append(Nodes, new Node(random(50,450),random(50,450),10));
 			overlap = false;
 		}
-		if (data.characters[i].nature == "good"){
-			var aX = random(50,450);
-			var aY = random(50,450);
-			for (var i = 0; i < Nodes.length; i++){
-				if (dist(Nodes[i].x,Nodes[i].y,aX,aY) <= Nodes[i].radius*2){
-					overlap = false;
+		while (overlap = true){
+			if (data.characters[i].nature == "good"){
+				var aX = random(50,450);
+				var aY = random(50,450);
+				for (var i = 0; i < Nodes.length; i++){
+					if (dist(Nodes[i].x,Nodes[i].y,aX,aY) <= Nodes[i].radius*2){
+						overlap = false;
+					}
+					if (overlap == false){
+						var aNode = new Node(aX,aY,10);
+						append(Nodes,aNode);
+					}
 				}
-				if (overlap == false){
-					var aNode = new Node(aX,aY,10);
-					append(Nodes,aNode);
+			}
+			else if (data.characters[i].nature == "neutral"){
+				var aX = random(50,450);
+				var aY = random(50,450);
+				for (var i = 0; i < Nodes.length; i++){
+					if (dist(Nodes[i].x,Nodes[i].y,aX,aY) <= Nodes[i].radius*2){
+						overlap = false;
+					}
+					if (overlap == false){
+						var aNode = new Node(aX,aY,10);
+						append(Nodes,aNode);
+					}
+				}
+			}
+			else if (data.characters[i].nature == "evil"){
+				var aX = random(50,450);
+				var aY = random(50,450);
+				for (var i = 0; i < Nodes.length; i++){
+					if (dist(Nodes[i].x,Nodes[i].y,aX,aY) <= Nodes[i].radius*2){
+						overlap = false;
+					}
+					if (overlap == false){
+						var aNode = new Node(aX,aY,10);
+						append(Nodes,aNode);
+					}
 				}
 			}
 		}
-		else if (data.characters[i].nature == "neutral"){
-			var aX = random(50,450);
-			var aY = random(50,450);
-			for (var i = 0; i < Nodes.length; i++){
-				if (dist(Nodes[i].x,Nodes[i].y,aX,aY) <= Nodes[i].radius*2){
-					overlap = false;
-				}
-				if (overlap == false){
-					var aNode = new Node(aX,aY,10);
-					append(Nodes,aNode);
-				}
-			}
-		}
-		else if (data.characters[i].nature == "evil"){
-			var aX = random(50,450);
-			var aY = random(50,450);
-			for (var i = 0; i < Nodes.length; i++){
-				if (dist(Nodes[i].x,Nodes[i].y,aX,aY) <= Nodes[i].radius*2){
-					overlap = false;
-				}
-				if (overlap == false){
-					var aNode = new Node(aX,aY,10);
-					append(Nodes,aNode);
-				}
-			}
-		}
-		
 	}
 
 }
