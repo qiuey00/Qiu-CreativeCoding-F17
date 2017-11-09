@@ -1,10 +1,11 @@
 var data;
-var Nodes = [];
+var Nodes;
 function preload(){
 	data = loadJSON("assets/arch.json");
 }
 function setup(){
 	createCanvas(500,500);
+	Nodes = [];
 	var good =0;
 	var neutral = 0;
 	var evil = 0;
