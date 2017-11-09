@@ -1,0 +1,30 @@
+{
+    "description": "Common character archetypes.",
+    "characters": [
+        {
+            "name": "hero",
+            "synonyms": ["protagonist"],
+            "qualities": ["brave","willing","determined"],
+            "nature": "good"
+        },
+        {
+            "name": "anti-hero",
+            "synonyms": [],
+            "qualities": ["unwilling","reluctant"],
+            "nature": "neutral"
+        },
+        {
+            "name": "analyst",
+            "synonyms": ["reasoner"],
+            "qualities": ["rational","logical"],
+            "nature": "neutral"
+        },
+        {
+            "name": "bureaucrat",
+            "synonyms": ["lawyer","politician","manager"],
+            "qualities": ["obedient"],
+            "nature": "neutral"
+        },
+        
+    ]
+}
