@@ -1,4 +1,4 @@
-//Partner: Abi
+//Partner: Abhi
 var myData;
 var url;
 
@@ -17,14 +17,13 @@ function setup(){
 	createCanvas(1200,600);
 	searchTerms = ["Brooklyn","Manhattan","Queens"];
 	baseUrl = "https://api.nytimes.com/svc/search/v2/articlesearch.json?";
-	appId = "api-key=864d90e87eda4e419d3b5bc32205ad32"; //we killed this key
+	appId = "api-key=a6fb10fb7a514d718c30cd95cf1fa77a"; //we killed this key
 	query = "q=";
 	queryInput = "manhattan";
 	url = baseUrl + query + queryInput + "&" + appId;
 	console.log(url);
 
-	myData = loadJSON(url);
-	console.log(myData);
+	myData = loadJSON(url);	
 
 	setInterval(queryData, 3000);
 
