@@ -20,8 +20,17 @@ function draw(){
 	text("Points = " + count, 10, 30);
 
 	aPlayer.display();
-	for (var index = 0; index < hazards.length; index++){
-		hazards[index].display();
+	for (var i = 0; i < hazards.length; i++){
+		hazards[i].display();
+		endCheck(i);
+		if (hazards.length > 1){
+			for (var j = 0; j < hazards.length; j++){
+				if (i == j){
+					break;
+				}
+				ballCollision(hazards[i],hazards[j]);
+			}
+		}
 	}
 	aCoin.display();
 
@@ -34,27 +43,38 @@ function draw(){
 		}
 	}
 
-
-
-
   //Game over 
-  endCheck();
+  
 }
 
 var restartCheck = false;
-function endCheck(){
-	for (var i = 0; i < hazards.length; i++){
-		if (collision(hazards[i]) == true){
-			fill("red");
-			if (count == 1){
-				text("You Lose. You had " + count + " point", 100, 100);
-			}
-			else{
-				text("You Lose. You had " + count + " points", 100, 100);
-			}
-			text("Press enter to restart",100,300);
-			frameRate(0);
+// function endCheck(){
+// 	for (var i = 0; i < hazards.length; i++){
+// 		if (collision(hazards[i]) == true){
+// 			fill("red");
+// 			if (count == 1){
+// 				text("You Lose. You had " + count + " point", 100, 100);
+// 			}
+// 			else{
+// 				text("You Lose. You had " + count + " points", 100, 100);
+// 			}
+// 			text("Press enter to restart",100,300);
+// 			frameRate(0);
+// 		}
+// 	}
+// }
+
+function endCheck(index){
+	if (collision(hazards[index]) == true){
+		fill("red");
+		if (count == 1){
+			text("You Lose. You had " + count + " point", 100, 100);
 		}
+		else{
+			text("You Lose. You had " + count + " points", 100, 100);
+		}
+		text("Press enter to restart",100,300);
+		frameRate(0);
 	}
 }
 
@@ -69,9 +89,19 @@ function restart(){
 }
 
 function collision(haz){
-  if (dist(aPlayer.getx(),aPlayer.gety(),haz.getx(),haz.gety()) <= 15){ //18 is the combined radius of both of the objects
+  if (dist(aPlayer.getx(),aPlayer.gety(),haz.getx(),haz.gety()) <= 16){ //18 is the combined radius of both of the objects
   	console.log("hit");
   	return true;
+  }
+  else {return false;}
+}
+
+function ballCollision(haz1,haz2){
+  if (dist(haz1.getx(),haz1.gety(),haz2.getx(),haz2.gety()) <= 15){ 
+  	haz1.xVel *= -1;
+  	haz1.yVel *= -1;
+  	haz2.yVel *= -1;
+  	haz2.yVel *= -1;
   }
   else {return false;}
 }
