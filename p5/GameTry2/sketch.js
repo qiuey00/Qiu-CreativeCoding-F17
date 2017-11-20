@@ -1,3 +1,6 @@
+
+//to play the game you need to use the arrow keys
+
 var aPlayer;
 var aCoin;
 var aHaz;
@@ -46,23 +49,6 @@ function draw(){
   //Game over 
   
 }
-
-var restartCheck = false;
-// function endCheck(){
-// 	for (var i = 0; i < hazards.length; i++){
-// 		if (collision(hazards[i]) == true){
-// 			fill("red");
-// 			if (count == 1){
-// 				text("You Lose. You had " + count + " point", 100, 100);
-// 			}
-// 			else{
-// 				text("You Lose. You had " + count + " points", 100, 100);
-// 			}
-// 			text("Press enter to restart",100,300);
-// 			frameRate(0);
-// 		}
-// 	}
-// }
 
 function endCheck(index){
 	if (collision(hazards[index]) == true){
