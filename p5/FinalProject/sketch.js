@@ -6,27 +6,14 @@ var song;
 var PosX ;
 var count;
 var freeMode = false;
-
 var begin = true;
 
 function setup() {
 	createCanvas(windowWidth,windowHeight-100);
 }
 
-function mouseClicked(){
-	if (mouseX > width/3-150 && mouseX < width/3+50 && mouseY > height/2-100 && mouseY< height/2+50){
-		begin = false;
-		songChoice = false;
-		song2();
-	}
-	if (mouseX > width/3*2-100 && mouseX < width/3*2+100 && mouseY > height/2-100 && mouseY < height/2+50){
-		songChoice = true;
-		begin = false;
-		song1();
-	}
-}
-
 function draw() {
+	//begin condition that displays the menu
 	if (begin){
 		background(0);
 		fill(0);
@@ -61,11 +48,20 @@ function draw() {
 
 		background(200);
 
+		//background sounds based on the song being played
+		if (songChoice){
+			bass2();
+		}
+		else{
+			bassCheck();
+		}
+
+		//player gravity force applied
 		var gravity = createVector(0,0.8);
 		player.applyForce(gravity);
-
 		translate(-player.pos.x+width/2,0);
 
+		//drawing the background
 		var bar = height/5;
 		fill(0);
 		stroke(0);
@@ -79,15 +75,7 @@ function draw() {
 		rect(PosX+100,0,5,height);
 		rect(PosX+110,0,10,height);
 
-		if (songChoice){
-			bass2();
-		}
-		else{
-			bassCheck();
-		}
-
-
-
+		//update player movements and checks for collision
 		player.update();
 		player.draw();
 		player.edges();
@@ -114,6 +102,21 @@ function draw() {
 	}
 }
 
+//allows for menu clicking
+function mouseClicked(){
+	if (mouseX > width/3-150 && mouseX < width/3+50 && mouseY > height/2-100 && mouseY< height/2+50){
+		begin = false;
+		songChoice = false;
+		song2();
+	}
+	if (mouseX > width/3*2-100 && mouseX < width/3*2+100 && mouseY > height/2-100 && mouseY < height/2+50){
+		songChoice = true;
+		begin = false;
+		song1();
+	}
+}
+
+//player movement
 function keyPressed(){
 	if (keyCode == UP_ARROW){
 		var jump = createVector(0,-17);
@@ -134,25 +137,33 @@ function keyPressed(){
 		}
 	}
 	else if (key == ' '){
-		player.vel = createVector(0,player.vel.y);	
-		freeMode = true;
+		if (!freeMode){
+			player.vel = createVector(0,player.vel.y);	
+			freeMode = true;
+		}
+		else{
+			player.vel = createVector(song[0][0],player.vel.y);
+			freeMode = false;
+		}
 	}
 }
 
+//allows for smoother player movement
 function keyReleased(){
 	if (keyCode == RIGHT_ARROW){
 		if (freeMode){
 			player.vel = createVector(0);
 		}
 	}
-	if (keyCode == LEFT_ARROW){
+
+	else if (keyCode == LEFT_ARROW){
 		if (freeMode){
 			player.vel = createVector(0);
 		}
 	}
-
 }
 
+//the setup for song choice 2
 function song2(){
 	song = [[5,60,570],[311,1],[311,1],[466,2],[392,1],[349,1],[311,1],[311,1],[466,2],[392,1],[349,1],[311,1],[311,1],[523,2],[392,1],[349,1],[311,1],[311,1],[415,1],[415,1],[415,1]];
 	player = new Player();
@@ -171,7 +182,7 @@ function song2(){
 	}
 }
 
-
+///the setup for song choice 1
 function song1(){
 	song = [[5,200,1000],[523,2],[880,1],[780,1],[523,3],[523,2],[880,1],[780,1],[587,2],[587,1],[523,1],[523,1],[880,1],[780,1],[659,1],[659,1],[523,1],[587,1],[659,1],[523,1],[587,1],[659,1],[523,1],[587,1],[523,5]];
 	player = new Player();
@@ -190,6 +201,8 @@ function song1(){
 		PosX+=150 + (song[i][1]*100);
 	}
 }
+
+//background notes for song 2
 function bass2(){
 	if (player.pos.x > 700 && player.pos.x < 720){
 		var back1 = new p5.Oscillator(349);
@@ -246,6 +259,8 @@ function bass2(){
 		back1.amp(0,.01,2);
 	}
 }
+
+//background notes for song 1
 function bassCheck(){
 	if (player.pos.x > 1200 && player.pos.x < 1220){
 		var back1 = new p5.Oscillator(233);
@@ -295,6 +310,7 @@ function bassCheck(){
 	}
 }
 
+//a platform class that is used for each platform. Has dimension variables, notes (to emit sound), and color (for color change)
 function Platform(notefreq, ntoelength,xVal,yVal){
 	this.pos = createVector(xVal,yVal);
 	this.length = ntoelength*100;;
@@ -314,6 +330,7 @@ function Platform(notefreq, ntoelength,xVal,yVal){
 	}
 }
 
+//player class that creates the player. This is where the force system is. Basically acc is added to vel which is added to pos. So 
 function Player() {
 	this.pos = createVector(50, height);
 	this.vel;
